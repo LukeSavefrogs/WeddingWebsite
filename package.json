@@ -1,0 +1,32 @@
+{
+  "name": "weddingwebsite",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Our wedding website",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.3.1",
+    "@astrojs/tailwind": "^5.0.2",
+    "@fontsource/great-vibes": "^5.0.18",
+    "@fontsource/italianno": "^5.0.18",
+    "astro": "^3.6.4",
+    "tailwindcss": "^3.3.5",
+    "typescript": "^5.3.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LukeSavefrogs/WeddingWebsite.git"
+  },
+  "author": "Luca Salvarani <lucasalvarani99@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LukeSavefrogs/WeddingWebsite/issues"
+  },
+  "homepage": "https://github.com/LukeSavefrogs/WeddingWebsite#readme"
+}
