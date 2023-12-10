@@ -1,0 +1,27 @@
+---
+interface Props {
+	title: string;
+    subtitle: string;
+    photo: string;
+}
+
+const { title, photo, subtitle } = Astro.props;
+
+import '@fontsource/great-vibes';
+---
+<header class="h-3/6">
+    <div id="cover_photo" class="w-full bg-cover bg-center h-full">
+        <div class="flex items-center justify-center h-full w-full bg-gray-900 bg-opacity-50">
+            <div class="text-center">
+                <h1 class="text-white text-4xl sm:text-5l md:text-6xl">{title}</h1>
+                <h2 class="text-white text-1xl md:text-4xl">{subtitle}</h2>
+            </div>
+        </div>
+    </div>
+</header>
+<style define:vars={{headerPhoto: `url("${photo}")`}}>
+	#cover_photo {
+		/* height: 50vh; */
+        background-image: var(--headerPhoto);
+	}
+</style>

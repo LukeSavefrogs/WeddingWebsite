@@ -1,0 +1,43 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+
+// const dateSeparator = " ♥ ";
+const dateSeparator = "/";
+---
+
+<Layout title="Luca & Veronica">
+  <main class="h-screen">
+    <Header
+      title="Luca & Veronica"
+      subtitle={["15", "09", "2024"].join(dateSeparator)}
+      photo="assets/header.jpg"
+    />
+	<!-- <section class="flex flex-col items-center justify-center h-3/6">
+	  <h1 class="text-4xl font-bold text-center text-gray-800">
+		Coming soon...
+	  </h1>
+	</section> -->
+	<section class="flex gap-5 flex-col md:flex-row md:h-3/6 items-center justify-center h-full text-center w-full container mx-auto px-4">
+		<section class="flex flex-col items-center justify-center h-full w-full bg-slate-300">
+			<h1 class="text-4xl font-bold  text-gray-800">
+				Quando?
+			</h1>
+			<p class="text-2xl ">
+				15 Settembre 2024
+			</p>
+		</section>
+		<section class="flex flex-col items-center justify-center h-full w-full bg-slate-300">
+			<h1 class="text-4xl font-bold  text-gray-800">
+				Dove?
+			</h1>
+			<p class="text-2xl">
+				Villa Appia Eventi
+			</p>
+			<p class="text-2xl">
+				<a href="https://maps.app.goo.gl/EdeQuFv8BX8tcTyq8">Via Appia Nuova, 244, 00047 Marino RM</a>
+			</p>
+		</section>
+	</section>
+  </main>
+</Layout>
