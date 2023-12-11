@@ -1,8 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
+import headerImage from "../assets/header.jpg";
 
-// const dateSeparator = " ♥ ";
 const dateSeparator = "/";
 ---
 
@@ -11,7 +11,7 @@ const dateSeparator = "/";
     <Header
       title="Luca & Veronica"
       subtitle={["15", "09", "2024"].join(dateSeparator)}
-      photo="assets/header.jpg"
+      photo={headerImage.src}
     />
 	<!-- <section class="flex flex-col items-center justify-center h-3/6">
 	  <h1 class="text-4xl font-bold text-center text-gray-800">
