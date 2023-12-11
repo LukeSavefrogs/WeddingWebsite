@@ -1,0 +1,44 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import headerImage from "../../assets/header.jpg";
+
+const dateSeparator = "/";
+---
+
+<Layout title="Luca & Veronica">
+  <main class="h-screen snap-y snap-mandatory md:snap-none overflow-y-scroll md:overflow-y-auto">
+    <Header
+	  class="h-full md:h-3/6 snap-start snap-always"
+      title="Luca & Veronica"
+      subtitle={["15", "09", "2024"].join(dateSeparator)}
+      photo={headerImage.src}
+    />
+	<section class="flex gap-5 flex-col items-center justify-center text-center w-full container mx-auto px-4 md:flex-row md:h-3/6">
+		<section class="snap-start snap-always flex flex-col items-center justify-center h-screen md:h-full w-full">
+			<h1 class="text-4xl font-bold text-gray-800">
+				Quando?
+			</h1>
+			<p class="text-2xl ">
+				15 Settembre 2024
+			</p>
+		</section>
+		<section class="snap-start snap-always flex flex-col items-center justify-center h-screen md:h-full w-full">
+			<h1 class="text-4xl font-bold text-gray-800">
+				Dove?
+			</h1>
+			<p class="text-2xl">
+				Villa Appia Eventi
+			</p>
+			<p class="text-2xl">
+				<a class="underline underline-offset-4 break-keep" href="https://maps.app.goo.gl/EdeQuFv8BX8tcTyq8" target="_blank">Via Appia Nuova, 244<br class="md:hidden"> 00047 Marino (RM)</a>
+			</p>
+		</section>
+		<section class="snap-start snap-always flex flex-col items-center justify-center h-screen md:h-full w-full">
+			<h1 class="text-4xl font-bold text-gray-800">
+				Vi aspettiamo!
+			</h1>
+		</section>
+	</section>
+  </main>
+</Layout>

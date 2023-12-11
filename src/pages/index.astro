@@ -1,43 +1,22 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import headerImage from "../assets/header.jpg";
 
-const dateSeparator = "/";
+const versions = Object.keys(import.meta.glob('./v*/index.astro')).map((key) => key.replace(/.\/(v.*?)\/.*/, "$1"))
 ---
 
 <Layout title="Luca & Veronica">
-  <main class="h-screen">
-    <Header
-      title="Luca & Veronica"
-      subtitle={["15", "09", "2024"].join(dateSeparator)}
-      photo={headerImage.src}
-    />
-	<!-- <section class="flex flex-col items-center justify-center h-3/6">
-	  <h1 class="text-4xl font-bold text-center text-gray-800">
-		Coming soon...
-	  </h1>
-	</section> -->
-	<section class="flex gap-5 flex-col md:flex-row md:h-3/6 items-center justify-center h-full text-center w-full container mx-auto px-4">
-		<section class="flex flex-col items-center justify-center h-full w-full bg-slate-300">
-			<h1 class="text-4xl font-bold  text-gray-800">
-				Quando?
-			</h1>
-			<p class="text-2xl ">
-				15 Settembre 2024
-			</p>
-		</section>
-		<section class="flex flex-col items-center justify-center h-full w-full bg-slate-300">
-			<h1 class="text-4xl font-bold  text-gray-800">
-				Dove?
-			</h1>
-			<p class="text-2xl">
-				Villa Appia Eventi
-			</p>
-			<p class="text-2xl">
-				<a href="https://maps.app.goo.gl/EdeQuFv8BX8tcTyq8">Via Appia Nuova, 244, 00047 Marino RM</a>
-			</p>
-		</section>
-	</section>
-  </main>
+    <main class="h-screen text-center container flex flex-col py-5">
+        <h2 class="text-5xl">Versioni di test</h2>
+        <div class="flex flex-col justify-center h-full gap-y-5">
+            {versions.map((version) => (
+                <section class="text-2xl"><a href={`/${version}`}>Vai alla {version}</a></section>
+            ))}
+        </div>
+    </main>
 </Layout>
+
+<style>
+    * {
+        font-family: 'Montserrat', sans-serif;
+    }
+</style>
