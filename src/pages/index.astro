@@ -5,7 +5,7 @@ const versions = Object.keys(import.meta.glob('./v*/index.astro')).map((key) => 
 ---
 
 <Layout title="Luca & Veronica">
-    <main class="h-screen text-center container flex flex-col py-5">
+    <main class="h-screen text-center container mx-auto flex flex-col py-5">
         <h2 class="text-5xl">Versioni di test</h2>
         <div class="flex flex-col justify-center h-full gap-y-5">
             {versions.map((version) => (
