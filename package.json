@@ -11,10 +11,13 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/alpinejs": "^0.3.2",
     "@astrojs/check": "^0.3.1",
     "@astrojs/tailwind": "^5.0.2",
     "@fontsource/great-vibes": "^5.0.18",
     "@fontsource/italianno": "^5.0.18",
+    "@types/alpinejs": "^3.13.6",
+    "alpinejs": "^3.13.3",
     "astro": "^3.6.4",
     "tailwindcss": "^3.3.5",
     "typescript": "^5.3.2"
