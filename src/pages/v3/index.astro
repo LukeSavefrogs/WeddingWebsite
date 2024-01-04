@@ -1,0 +1,47 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import headerImage from "../../assets/bologna_mani.jpg";
+import Section from "../../layouts/Section.astro";
+import Countdown from "../../components/Countdown.astro";
+
+const dateSeparator = "/";
+
+const weddingDate = new Date("2024-09-15T10:30:00.000Z");
+---
+
+<Layout title="Luca & Veronica">
+  <main
+    class="h-screen snap-y snap-mandatory md:snap-none overflow-y-scroll md:overflow-y-auto md:flex md:flex-col lg:flex-row"
+  >
+    <Header
+      class="flex h-full md:max-lg:h-3/6 lg:w-3/6 snap-start snap-always"
+      title="Luca e Veronica"
+      subtitle={["15", "09", "2024"].join(dateSeparator)}
+      photo={headerImage.src}
+    />
+
+    <section
+      class="flex gap-5 flex-col md:max-lg:flex-row items-center justify-center text-center w-full lg:w-3/6 container mx-auto px-4 md:max-lg:h-3/6"
+    >
+      <Section title="Countdown">
+        <Countdown date={weddingDate}/>
+      </Section>
+
+      <Section title="Dove?">
+        <p>Villa Appia Eventi</p>
+        <p>
+          <a
+            class="underline underline-offset-4 break-keep"
+            href="https://maps.app.goo.gl/EdeQuFv8BX8tcTyq8"
+            target="_blank"
+          >
+            Via Appia Nuova, 244<br class="md:hidden" /> 00047 Marino (RM)
+          </a>
+        </p>
+      </Section>
+
+      <Section title="Vi aspettiamo!" />
+    </section>
+  </main>
+</Layout>

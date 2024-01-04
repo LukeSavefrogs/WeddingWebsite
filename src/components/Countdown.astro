@@ -1,0 +1,134 @@
+---
+interface Props {
+  date: Date;
+}
+
+const { date } = Astro.props;
+---
+<countdown-timer data-end={date}>
+  <div class="flex justify-center gap-5 sm:gap-8">
+
+    <div class="flex flex-col gap-5 relative">
+      <div class="h-16 w-16 md:w-32 flex justify-between items-center bg-[#f3d8d8] rounded-lg">
+        <div class="relative h-2.5 w-2.5 sm:h-3 sm:w-3 !-left-[6px] rounded-full bg-[#E7B1B1]"></div>
+        <span id="countdown-days" class="text-3xl md:text-5xl">
+          0
+        </span>
+        <div class="relative h-2.5 w-2.5 sm:h-3 sm:w-3 -right-[6px] rounded-full bg-[#E7B1B1]"></div>
+      </div>
+      <span id="countdown-days-label" class="text-[#8486A9] text-base sm:text-2xl text-center capitalize">
+        Giorni
+      </span>
+    </div>
+
+    <div class="flex flex-col gap-5 relative">
+      <div class="h-16 w-16 md:w-32 flex justify-between items-center bg-[#f3d8d8] rounded-lg">
+        <div class="relative h-2.5 w-2.5 sm:h-3 sm:w-3 !-left-[6px] rounded-full bg-[#E7B1B1]"></div>
+        <span id="countdown-hours" class="text-3xl md:text-5xl">
+          0
+        </span>
+        <div class="relative h-2.5 w-2.5 sm:h-3 sm:w-3 -right-[6px] rounded-full bg-[#E7B1B1]"></div>
+      </div>
+      <span id="countdown-hours-label" class="text-[#8486A9] text-base sm:text-2xl text-center font-medium">
+        Ore
+      </span>
+    </div>
+    
+    <div class="flex flex-col gap-5 relative">
+      <div class="h-16 w-16 md:w-32 flex justify-between items-center bg-[#f3d8d8] rounded-lg">
+        <div class="relative h-2.5 w-2.5 sm:h-3 sm:w-3 !-left-[6px] rounded-full bg-[#E7B1B1]"></div>
+        <span id="countdown-minutes" class="text-3xl md:text-5xl">
+          0
+        </span>
+        <div class="relative h-2.5 w-2.5 sm:h-3 sm:w-3 -right-[6px] rounded-full bg-[#E7B1B1]"></div>
+      </div>
+      <span id="countdown-minutes-label" class="text-[#8486A9] text-base sm:text-2xl text-center capitalize">
+        Minuti
+      </span>
+    </div>
+    
+    <div class="flex flex-col gap-5 relative">
+      <div class="h-16 w-16 md:w-32 flex justify-between items-center bg-[#f3d8d8] rounded-lg">
+        <div class="relative h-2.5 w-2.5 sm:h-3 sm:w-3 !-left-[6px] rounded-full bg-[#E7B1B1]"></div>
+        <span id="countdown-seconds" class="text-3xl md:text-5xl">
+          0
+        </span>
+        <div class="relative h-2.5 w-2.5 sm:h-3 sm:w-3 -right-[6px] rounded-full bg-[#E7B1B1]"></div>
+      </div>
+      <span id="countdown-seconds-label" class="text-[#8486A9] text-base sm:text-2xl text-center capitalize">
+        Secondi
+      </span>
+    </div>
+
+  </div>
+</countdown-timer>
+
+<script>
+  class CountdownTimer extends HTMLElement {
+    private interval: any;
+    private end: number;
+
+    constructor() {
+      super();
+
+      const endDate = this.dataset.end;
+
+      this.end = new Date(endDate?.toString() ?? "").getTime();
+      this.interval = null;
+    }
+
+    connectedCallback() {
+      this.interval = setInterval(() => {
+        this.updateCountdown();
+      }, 1000);
+    }
+
+    updateCountdown() {
+      const now = new Date().getTime();
+      const distance = this.end - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      const minutes = Math.floor(
+        (distance % (1000 * 60 * 60)) / (1000 * 60)
+      );
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      const countdownDays = this.querySelector("#countdown-days") as HTMLElement;
+      const countdownHours = this.querySelector("#countdown-hours") as HTMLElement;
+      const countdownMinutes = this.querySelector("#countdown-minutes") as HTMLElement;
+      const countdownSeconds = this.querySelector("#countdown-seconds") as HTMLElement;
+
+      countdownDays.innerText = days.toString().padStart(2, "0");
+      countdownHours.innerText = hours.toString().padStart(2, "0");
+      countdownMinutes.innerText = minutes.toString().padStart(2, "0");
+      countdownSeconds.innerText = seconds.toString().padStart(2, "0");
+
+      if (distance < 0) {
+        clearInterval(this.interval);
+        countdownDays.innerText = "0";
+        countdownHours.innerText = "0";
+        countdownMinutes.innerText = "0";
+        countdownSeconds.innerText = "0";
+      }
+    }
+  }
+
+  customElements.define('countdown-timer', CountdownTimer);
+</script>
+
+<style>
+  #countdown-days, #countdown-hours, #countdown-minutes, #countdown-seconds {
+    /* color: #a5b4fc; */
+    color: black;
+    /* color: #E7B1B1; */
+  }
+/* 
+  countdown-timer > div > div > div {
+    background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+                  radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);;
+  } */
+
+</style>
